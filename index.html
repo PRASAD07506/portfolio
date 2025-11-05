@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prasad Kumar Mohanty — Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #79b428;
+      --accent-2: #becd39;
+      --bg-dark: #0b0c10;
+      --panel: #11101a;
+      --muted: #97a5bb;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
+    body{background:linear-gradient(180deg,#453448 0%, #a7982d 100%);color:#fff;min-height:100vh}
+
+    /* Header */
+    header{
+      position:fixed;top:0;left:0;width:100%;
+      background:rgba(20,16,40,0.85);backdrop-filter: blur(4px);
+      display:flex;align-items:center;justify-content:space-between;padding:14px 36px;z-index:1100;
+      transition:0.25s ease;
+    }
+    header.scrolled{background:linear-gradient(90deg,#143238, #263238);box-shadow:0 6px 25px rgba(0,0,0,0.5)}
+    .brand{font-weight:700;color:var(--accent);letter-spacing:0.2px}
+    nav ul{list-style:none;display:flex;gap:18px;align-items:center}
+    nav a{color:#d7d7d7;text-decoration:none;font-weight:500;transition:.18s}
+    nav a:hover, nav a.active{color:var(--accent)}
+    .hamburger{display:none;cursor:pointer}
+    .hamburger .bar{width:24px;height:3px;background:var(--accent);margin:4px 0;transition:all .3s}
+
+    /* Mobile menu */
+    @media(max-width:900px){
+      nav ul{display:none;position:absolute;top:64px;right:22px;background:rgba(8,8,12,0.95);padding:14px;border-radius:10px;flex-direction:column;min-width:180px}
+      nav ul.show{display:flex}
+      .hamburger{display:block}
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 28px 80px;
+      gap:40px;
+    }
+    .hero-inner{max-width:980px;display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .hero-left{flex:1;min-width:280px}
+    .hero-right{flex:0 0 320px;text-align:center}
+    .intro-sub{color:var(--accent-2);font-weight:600;margin-bottom:6px}
+    .intro-name{font-size:2.6rem;font-weight:700;line-height:1;margin-bottom:8px}
+    .intro-role{color:var(--muted);font-size:1.05rem;margin-bottom:12px}
+    #typed-box{color:#4bba5f;font-weight:700;font-size:1.05rem;border-right:3px solid #2b9659;padding-right:6px;white-space:nowrap;overflow:hidden}
+
+    .hero-photo{width:300px;height:300px;border-radius:50%;overflow:hidden;border:5px solid rgba(206, 206, 19, 0.12);box-shadow:0 10px 35px rgba(0,0,0,0.6)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s,box-shadow .45s}
+    .hero-photo:hover img{transform:scale(1.04);box-shadow:0 18px 45px rgba(191, 200, 13, 0.18)}
+
+    .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn-accent{background:linear-gradient(90deg,var(--accent),#bb913b);color:#111;border-radius:28px;padding:10px 18px;border:none;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(255,180,0,0.12);transition:.25s}
+    .btn-accent:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(255,64,64,.14)}
+    .btn-outline{background:transparent;color:var(--accent);border:1px solid rgba(255,180,0,0.12);padding:10px 18px;border-radius:28px}
+
+    /* Sections */
+    section{padding:80px 8%}
+    .section-title{text-align:center;color:var(--accent);font-size:1.8rem;margin-bottom:18px}
+
+    /* About */
+    .about-wrap{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:center}
+    .about-text{max-width:680px;color:#e6e6e6;line-height:1.7}
+    .download-resume{display:inline-block;margin-top:14px;text-decoration:none}
+
+    /* Skills */
+    .skills-grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .skill-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px}
+    .skill-name{display:flex;justify-content:space-between;margin-bottom:8px;color:#eaeaea}
+    .progress{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
+    .progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0;animation:grow 1.6s forwards}
+
+    @keyframes grow{to{width:var(--w)}}
+
+    
+
+    /* Projects */
+    /* Common button base */
+.buttons a {
+  display: inline-block;
+  padding: 12px 28px;
+  margin-right: 12px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid transparent;
+}
+
+/* Main button (View Projects) */
+.btn-primary {
+  background: linear-gradient(90deg, #a8ff35, #ffd700);
+  color: #000;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+/* Secondary button (Hire Me) */
+.btn-secondary {
+  background: transparent;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+}
+
+.btn-secondary:hover {
+  background: #ffd700;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+/* Tertiary button (Download CV) */
+.btn-tertiary {
+  background: transparent;
+  color: #ccc;
+  border: 2px solid #555;
+}
+
+.btn-tertiary:hover {
+  background: #ffd700;
+  color: #000;
+  border-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+
+    /* Contact */
+    .contact-box{max-width:760px;margin:0 auto;text-align:center;color:#eaeaea}
+
+    /* Back to top */
+    #backToTop{position:fixed;right:22px;bottom:28px;background:var(--accent);color:#111;border:none;width:46px;height:46px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.45);z-index:1200}
+
+    /* Footer */
+    footer{padding:18px;text-align:center;color:#d0d0d0;background:transparent;border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* responsive tweaks */
+    @media(max-width:980px){
+      .hero-inner{padding-top:36px}
+      .hero-photo{width:240px;height:240px}
+      .intro-name{font-size:2rem}
+    }
+    @media(max-width:560px){
+      header{padding:12px 14px}
+      .cta-row{justify-content:center}
+      section{padding:60px 6%}
+      .hero{padding-top:100px}
+    }
+    .thumb {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+    .contact-box:hover {
+  box-shadow: 0 0 30px rgba(255,215,0,0.25), 0 0 10px rgba(255,215,0,0.3);
+  transform: translateY(-6px);
+}
+
+.social-icon {
+  font-size: 1.8rem;
+  color: #ffd700;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #fff;
+  text-shadow: 0 0 15px #ffd700, 0 0 30px #ffbf00;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: #ffd700;
+  margin: 8px auto 0;
+  border-radius: 3px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+.contact-form button {
+  width: 100%;
+  margin-top: 10px;
+}
+.project img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="siteHeader">
+    <div class="brand">Prasad<span style="color:var(--muted)">Kumar.</span></div>
+
+    <nav>
+      <ul id="navList">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hamburger" id="hamburgerBtn" aria-label="menu" aria-expanded="false">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left" data-aos="fade-right">
+        <div class="intro-sub">Hello, My name is</div>
+        <div class="intro-name">Prasad Kumar Mohanty</div>
+        <div class="intro-role">Full Stack Developer</div>
+
+        <div id="typed-box" style="margin-top:8px"></div>
+
+        <div class="buttons">
+  <a href="#projects" class="btn-primary">View Projects</a>
+  <a href="#contact" class="btn-secondary">Hire Me</a>
+  <a href="assets/PrasadKumarMohanty_CV.pdf" download class="btn-tertiary">Download CV</a>
+</div>
+
+      </div>
+
+      <div class="hero-right" data-aos="fade-left">
+        <!-- Make sure file is located at /images/mtphoto.jpg -->
+        <div class="hero-photo" title="Prasad Kumar Mohanty">
+          <img src="myphoto.jpg" alt="Prasad Kumar Mohanty — profile photo" onerror="this.onerror=null; this.src='https://via.placeholder.com/400?text=Profile'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+  <div class="section-title">About Me</div>
+  <div class="about-wrap container">
+    <div class="about-text" data-aos="fade-right">
+      <p style="font-size: 1.05rem; line-height: 1.8; color: #e5e5e5;">
+        I’m <strong style="color:#ffd700;">Prasad Kumar Mohanty</strong> — an 
+        <strong>enthusiastic Full Stack Developer</strong> with hands-on experience 
+        in developing a <strong>Hospital Management System (HMS)</strong> using 
+        <strong>PHP, MySQL, and JavaScript</strong>. I specialize in building responsive, 
+        user-friendly web applications with a focus on clean design and secure backend systems.
+      </p>
+
+      <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 12px; color:#cfcfcf;">
+        My expertise includes frontend technologies like <strong>HTML, CSS, Bootstrap, and JavaScript</strong>, 
+        and backend development involving <strong>RESTful APIs, JWT Authentication, and MySQL database management</strong>. 
+        I’m passionate about creating scalable, efficient systems that enhance user experience and simplify business operations.
+      </p>
+
+      <div style="margin-top: 18px; font-size: 0.98rem; color:#bcbcbc;">
+        🎓 <strong>Education:</strong> B.Sc. in Science — 
+        <em>Udaynath Autonomous College of Science & Technology</em> (Aug 2022 – May 2025)  
+        <br>
+        📜 <strong>Certification:</strong> <em>AI for Students — Build Your Own Generative AI Model</em> (NxtWave, Aug 2024)
+      </div>
+
+      <a class="btn-accent download-resume" 
+         href="RESUME.pdf" 
+         download 
+         style="display:inline-block; margin-top: 25px; padding: 10px 22px; background: #ffd700; color: #111; border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.3s;">
+         📄 Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- SKILLS -->
+  <section id="skills" data-aos="fade-up">
+    <div class="section-title">Skills</div>
+
+    <div class="skills-grid" data-aos="fade-up">
+      <div class="skill-card">
+        <div class="skill-name"><span>HTML</span><span>90%</span></div>
+        <div class="progress" style="--w:90%"><span style="width:90%"></span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name"><span>CSS / Bootstrap</span><span>85%</span></div>
+        <div class="progress" style="--w:85%"><span style="width:85%"></span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name"><span>JavaScript</span><span>80%</span></div>
+        <div class="progress" style="--w:80%"><span style="width:80%"></span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name"><span>PHP</span><span>85%</span></div>
+        <div class="progress" style="--w:85%"><span style="width:85%"></span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name"><span>MySQL</span><span>80%</span></div>
+        <div class="progress" style="--w:80%"><span style="width:80%"></span></div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-name"><span>CPP</span><span>75%</span></div>
+        <div class="progress" style="--w:75%"><span style="width:75%"></span></div>
+      </div>
+    </div>
+  </section>
+<!--CERTIFICATES-->
+<section id="certificates" data-aos="fade-up">
+  <div class="section-title">Certificates</div>
+
+  <div class="cert-wrap container" 
+       style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; align-items:stretch; margin-top:30px;">
+
+    <!-- Certificate 1 -->
+    <div class="cert-card" 
+         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
+                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
+      <img src="CERTIFICATE1.jpeg" alt="Certificate 1" 
+           style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3 style="color:#ffd700;">AI for Students</h3>
+      <p style="color:#ccc; font-size:0.9rem;">NxtWave • August 2024</p>
+      <a href="certificate1.pdf" target="_blank" 
+         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
+         View Certificate
+      </a>
+    </div>
+
+    <!-- Certificate 2 -->
+    <div class="cert-card" 
+         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
+                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
+      <img src="CERTIFICATE2.jpeg" alt="Certificate 2" 
+           style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3 style="color:#ffd700;">Web Development Workshop</h3>
+      <p style="color:#ccc; font-size:0.9rem;">NxtWave • July 2024</p>
+      <a href="certificate2.pdf" target="_blank" 
+         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
+         View Certificate
+      </a>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="cert-card" 
+         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
+                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
+      <img src="CERTIFICATE3.jpeg" alt="Certificate 3" 
+           style="width:100%; border-radius:10px; margin-bottom:15px;">
+      <h3 style="color:#ffd700;">JavaScript Essentials</h3>
+      <p style="color:#ccc; font-size:0.9rem;">NxtWave • June 2024</p>
+      <a href="certificate3.pdf" target="_blank" 
+         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
+         View Certificate
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- PROJECTS -->
+<section id="projects" data-aos="zoom-in">
+  <div class="section-title">Projects</div>
+
+  <div class="projects-grid container">
+    <div class="project" data-aos="flip-left">
+      <div class="thumb" style="background-image:url('Hospital-Management-System-development.jpg');"></div>
+      <h5>Hospital Management System</h5>
+      <p style="color:#dcdcdc">
+        Patient records, appointment scheduling, billing, staff & inventory management.
+        Built with PHP (CodeIgniter/Laravel), MySQL, Bootstrap and hosted on AWS.
+      </p>
+      <p><a class="btn-accent" href="https://hospitalmgmtsys.42web.io" target="_blank" rel="noreferrer">View Project</a></p>
+    </div>
+
+    <div class="project" data-aos="flip-left" data-aos-delay="80">
+      <div class="thumb" style="background-image:url('online-booking-service-vector-illustration-260nw-1404844478.JPG');"></div>
+      <h5>Travel App</h5>
+      <p style="color:#dcdcdc">
+        Flight & hotel booking, destination guides and user reviews.
+        Built with HTML, CSS and JavaScript (React for SPA features).
+      </p>
+      <p><a class="btn-accent" href="https://travel-app-murex-two.vercel.app/" target="_blank" rel="noreferrer">View Project</a></p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up" style="padding:80px 20px; text-align:center;">
+  <div class="section-title">Get In Touch</div>
+
+  <div class="contact-box" 
+       style="max-width:550px; margin:40px auto; background:rgba(20,20,20,0.8); 
+              border:1px solid rgba(255,215,0,0.2); border-radius:12px; padding:40px 25px; 
+              box-shadow:0 0 25px rgba(255,215,0,0.1); transition:0.4s;">
+    
+    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
+      📞 
+      <a href="tel:+917847893653" 
+         style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
+         +91 78478 93653
+      </a>
+    </p>
+
+    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
+      ✉️ 
+      <a href="mailto:kumarprasadmohanty5@gmail.com" 
+         style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
+         kumarprasadmohanty5@gmail.com
+      </a>
+    </p>
+
+    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:25px;">
+      🌍 Based in <strong style="color:#ffd700;">Cuttack, Odisha</strong>
+    </p>
+
+    <div class="social-links" 
+         style="display:flex; justify-content:center; gap:25px; margin-top:10px;">
+      <a href="https://www.linkedin.com/in/prasad-kumar-mohanty-77a2b22ba" 
+         target="_blank" rel="noreferrer" class="social-icon linkedin" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/PRASAD07506" 
+         target="_blank" rel="noreferrer" class="social-icon github" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/oye_itz_prasad_07?igsh=ZHZwMXJiZmJ3eW8=" 
+         target="_blank" rel="noreferrer" class="social-icon instagram" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <div class="contact-form" data-aos="fade-up">
+  <h3 style="color:#ffd700; margin-top:30px;">Send me a message</h3>
+  
+  <form action="https://formspree.io/f/your_form_id" method="POST" style="max-width:500px; margin:20px auto;">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn-accent">📨 Send Message</button>
+  </form>
+</div>
+
+  </div>
+</section>
+
+
+  <footer>
+    <small>© <span id="year"></span> Prasad Kumar Mohanty • Built with ♥</small>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Init AOS
+    AOS.init({ duration: 900, once: true, offset: 100 });
+
+    // Typed.js for hero typed-box
+    const typed = new Typed('#typed-box', {
+      strings: ["Full Stack Developer", "PHP • MySQL • JavaScript", "JWT • REST API • Scalable Apps"],
+      typeSpeed: 70,
+      backSpeed: 40,
+      backDelay: 1400,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
+    });
+
+    // Sticky header on scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+      // back to top button
+      document.getElementById('backToTop').style.display = window.scrollY > 350 ? 'flex' : 'none';
+    });
+
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navList = document.getElementById('navList');
+    hamburger.addEventListener('click', () => {
+      navList.classList.toggle('show');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+      hamburger.classList.toggle('open');
+    });
+
+    // Smooth scroll behavior for nav links (highlight active)
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        // close mobile menu if open
+        navList.classList.remove('show');
+        // remove .active from others
+        document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+      });
+    });
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animate skill bars when skills section enters viewport
+    function animateSkills() {
+      const skills = document.querySelectorAll('.progress > span');
+      skills.forEach((s) => {
+        const w = s.style.width || s.getAttribute('style')?.match(/width:\s*([0-9%]+)/)?.[1] || '0%';
+        s.style.width = w; // ensures the width is applied (CSS animation uses inline width)
+      });
+    }
+    // Run once after AOS finished loading (so progress bars animate)
+    window.addEventListener('load', () => {
+      setTimeout(animateSkills, 300);
+    });
+  </script>
+</body>
+</html>

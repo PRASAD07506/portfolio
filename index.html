@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -16,7 +17,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --accent: #79b428;
       --accent-2: #becd39;
       --bg-dark: #0b0c10;
@@ -24,43 +25,159 @@
       --muted: #97a5bb;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
-    body{background:linear-gradient(180deg,#453448 0%, #a7982d 100%);color:#fff;min-height:100vh}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: linear-gradient(180deg, #453448 0%, #a7982d 100%);
+      color: #fff;
+      min-height: 100vh
+    }
 
     /* Header */
-    header{
-      position:fixed;top:0;left:0;width:100%;
-      background:rgba(20,16,40,0.85);backdrop-filter: blur(4px);
-      display:flex;align-items:center;justify-content:space-between;padding:14px 36px;z-index:1100;
-      transition:0.25s ease;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(20, 16, 40, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 36px;
+      z-index: 1100;
+      transition: 0.25s ease;
     }
-    header.scrolled{background:linear-gradient(90deg,#143238, #263238);box-shadow:0 6px 25px rgba(0,0,0,0.5)}
-    .brand{font-weight:700;color:var(--accent);letter-spacing:0.2px}
-    nav ul{list-style:none;display:flex;gap:18px;align-items:center}
-    nav a{color:#d7d7d7;text-decoration:none;font-weight:500;transition:.18s}
-    nav a:hover, nav a.active{color:var(--accent)}
-    .hamburger{display:none;cursor:pointer}
-    .hamburger .bar{width:24px;height:3px;background:var(--accent);margin:4px 0;transition:all .3s}
+
+    header.scrolled {
+      background: linear-gradient(90deg, #143238, #263238);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5)
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.2px
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    nav a {
+      color: #d7d7d7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: .18s
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent)
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer
+    }
+
+    .hamburger .bar {
+      width: 24px;
+      height: 3px;
+      background: var(--accent);
+      margin: 4px 0;
+      transition: all .3s
+    }
 
     /* Mobile menu */
-    @media(max-width:900px){
-      nav ul{display:none;position:absolute;top:64px;right:22px;background:rgba(8,8,12,0.95);padding:14px;border-radius:10px;flex-direction:column;min-width:180px}
-      nav ul.show{display:flex}
-      .hamburger{display:block}
+    @media(max-width:900px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 64px;
+        right: 22px;
+        background: rgba(8, 8, 12, 0.95);
+        padding: 14px;
+        border-radius: 10px;
+        flex-direction: column;
+        min-width: 180px
+      }
+
+      nav ul.show {
+        display: flex
+      }
+
+      .hamburger {
+        display: block
+      }
     }
 
     /* Hero */
-    .hero{
-      min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 28px 80px;
-      gap:40px;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 28px 80px;
+      gap: 40px;
     }
-    .hero-inner{max-width:980px;display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap}
-    .hero-left{flex:1;min-width:280px}
-    .hero-right{flex:0 0 320px;text-align:center}
-    .intro-sub{color:var(--accent-2);font-weight:600;margin-bottom:6px}
-    .intro-name{font-size:2.6rem;font-weight:700;line-height:1;margin-bottom:8px}
-    .intro-role{color:var(--muted);font-size:1.05rem;margin-bottom:12px}
-    #typed-box{color:#4bba5f;font-weight:700;font-size:1.05rem;border-right:3px solid #2b9659;padding-right:6px;white-space:nowrap;overflow:hidden}
+
+    .hero-inner {
+      max-width: 980px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .hero-left {
+      flex: 1;
+      min-width: 280px
+    }
+
+    .hero-right {
+      flex: 0 0 320px;
+      text-align: center
+    }
+
+    .intro-sub {
+      color: var(--accent-2);
+      font-weight: 600;
+      margin-bottom: 6px
+    }
+
+    .intro-name {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px
+    }
+
+    .intro-role {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 12px
+    }
+
+    #typed-box {
+      color: #4bba5f;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-right: 3px solid #2b9659;
+      padding-right: 6px;
+      white-space: nowrap;
+      overflow: hidden
+    }
 
     .hero-photo-wrap {
       position: relative;
@@ -73,12 +190,29 @@
       box-shadow: 0 0 35px rgba(255, 215, 0, 0.35);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
+
     .hero-photo-wrap:hover {
       transform: scale(1.04);
       box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
     }
-    .hero-photo{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111;}
-    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s,box-shadow .45s}
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+      transform: scale(1.06);
+      transition: transform .45s, box-shadow .45s
+    }
 
     .cert-card:hover {
       transform: translateY(-8px);
@@ -89,7 +223,10 @@
     /* Certificate Modal */
     .cert-modal-overlay {
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
       z-index: 2000;
@@ -100,10 +237,12 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
     .cert-modal-overlay.active {
       display: flex;
       opacity: 1;
     }
+
     .cert-modal-container {
       background: #16181f;
       border: 1px solid rgba(255, 215, 0, 0.3);
@@ -114,22 +253,25 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
       position: relative;
     }
+
     .cert-modal-header {
       padding: 16px 24px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .cert-modal-title {
       font-size: 1.25rem;
       font-weight: 700;
       color: #ffd700;
     }
+
     .cert-modal-close {
       background: transparent;
       border: none;
@@ -138,7 +280,11 @@
       cursor: pointer;
       transition: color 0.2s;
     }
-    .cert-modal-close:hover { color: #fff; }
+
+    .cert-modal-close:hover {
+      color: #fff;
+    }
+
     .cert-modal-body {
       padding: 20px;
       overflow-y: auto;
@@ -149,12 +295,14 @@
       flex: 1;
       min-height: 400px;
     }
+
     .cert-modal-body img {
       max-width: 100%;
       max-height: 70vh;
       border-radius: 8px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     }
+
     .cert-modal-body iframe {
       width: 100%;
       height: 70vh;
@@ -162,190 +310,323 @@
       border-radius: 8px;
     }
 
-    .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn-accent{background:linear-gradient(90deg,var(--accent),#bb913b);color:#111;border-radius:28px;padding:10px 18px;border:none;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(255,180,0,0.12);transition:.25s}
-    .btn-accent:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(255,64,64,.14)}
-    .btn-outline{background:transparent;color:var(--accent);border:1px solid rgba(255,180,0,0.12);padding:10px 18px;border-radius:28px}
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn-accent {
+      background: linear-gradient(90deg, var(--accent), #bb913b);
+      color: #111;
+      border-radius: 28px;
+      padding: 10px 18px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 180, 0, 0.12);
+      transition: .25s
+    }
+
+    .btn-accent:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(255, 64, 64, .14)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(255, 180, 0, 0.12);
+      padding: 10px 18px;
+      border-radius: 28px
+    }
 
     /* Sections */
-    section{padding:80px 8%}
-    .section-title{text-align:center;color:var(--accent);font-size:1.8rem;margin-bottom:18px}
+    section {
+      padding: 80px 8%
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 18px
+    }
 
     /* About */
-    .about-wrap{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:center}
-    .about-text{max-width:680px;color:#e6e6e6;line-height:1.7}
-    .download-resume{display:inline-block;margin-top:14px;text-decoration:none}
+    .about-wrap {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .about-text {
+      max-width: 680px;
+      color: #e6e6e6;
+      line-height: 1.7
+    }
+
+    .download-resume {
+      display: inline-block;
+      margin-top: 14px;
+      text-decoration: none
+    }
 
     /* Skills */
-    .skills-grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .skill-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px}
-    .skill-name{display:flex;justify-content:space-between;margin-bottom:8px;color:#eaeaea}
-    .progress{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
-    .progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0;animation:grow 1.6s forwards}
+    .skills-grid {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px
+    }
 
-    @keyframes grow{to{width:var(--w)}}
+    .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: 10px
+    }
 
-    
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: #eaeaea
+    }
+
+    .progress {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      overflow: hidden
+    }
+
+    .progress>span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      width: 0;
+      animation: grow 1.6s forwards
+    }
+
+    @keyframes grow {
+      to {
+        width: var(--w)
+      }
+    }
+
+
 
     /* Projects */
     /* Common button base */
-.buttons a {
-  display: inline-block;
-  padding: 12px 28px;
-  margin-right: 12px;
-  border-radius: 30px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  border: 2px solid transparent;
-}
+    .buttons a {
+      display: inline-block;
+      padding: 12px 28px;
+      margin-right: 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      border: 2px solid transparent;
+    }
 
-/* Main button (View Projects) */
-.btn-primary {
-  background: linear-gradient(90deg, #a8ff35, #ffd700);
-  color: #000;
-}
+    /* Main button (View Projects) */
+    .btn-primary {
+      background: linear-gradient(90deg, #a8ff35, #ffd700);
+      color: #000;
+    }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-}
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
 
-/* Secondary button (Hire Me) */
-.btn-secondary {
-  background: transparent;
-  color: #ffd700;
-  border: 2px solid #ffd700;
-}
+    /* Secondary button (Hire Me) */
+    .btn-secondary {
+      background: transparent;
+      color: #ffd700;
+      border: 2px solid #ffd700;
+    }
 
-.btn-secondary:hover {
-  background: #ffd700;
-  color: #000;
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-}
+    .btn-secondary:hover {
+      background: #ffd700;
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
 
-/* Tertiary button (Download CV) */
-.btn-tertiary {
-  background: transparent;
-  color: #ccc;
-  border: 2px solid #555;
-}
+    /* Tertiary button (Download CV) */
+    .btn-tertiary {
+      background: transparent;
+      color: #ccc;
+      border: 2px solid #555;
+    }
 
-.btn-tertiary:hover {
-  background: #ffd700;
-  color: #000;
-  border-color: #ffd700;
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-}
+    .btn-tertiary:hover {
+      background: #ffd700;
+      color: #000;
+      border-color: #ffd700;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
 
 
     /* Contact */
-    .contact-box{max-width:760px;margin:0 auto;text-align:center;color:#eaeaea}
+    .contact-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      color: #eaeaea
+    }
 
     /* Back to top */
-    #backToTop{position:fixed;right:22px;bottom:28px;background:var(--accent);color:#111;border:none;width:46px;height:46px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.45);z-index:1200}
+    #backToTop {
+      position: fixed;
+      right: 22px;
+      bottom: 28px;
+      background: var(--accent);
+      color: #111;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .45);
+      z-index: 1200
+    }
 
     /* Footer */
-    footer{padding:18px;text-align:center;color:#d0d0d0;background:transparent;border-top:1px solid rgba(255,255,255,0.03)}
+    footer {
+      padding: 18px;
+      text-align: center;
+      color: #d0d0d0;
+      background: transparent;
+      border-top: 1px solid rgba(255, 255, 255, 0.03)
+    }
 
     /* responsive tweaks */
-    @media(max-width:980px){
-      .hero-inner{padding-top:36px}
-      .hero-photo{width:240px;height:240px}
-      .intro-name{font-size:2rem}
+    @media(max-width:980px) {
+      .hero-inner {
+        padding-top: 36px
+      }
+
+      .hero-photo {
+        width: 240px;
+        height: 240px
+      }
+
+      .intro-name {
+        font-size: 2rem
+      }
     }
-    @media(max-width:560px){
-      header{padding:12px 14px}
-      .cta-row{justify-content:center}
-      section{padding:60px 6%}
-      .hero{padding-top:100px}
+
+    @media(max-width:560px) {
+      header {
+        padding: 12px 14px
+      }
+
+      .cta-row {
+        justify-content: center
+      }
+
+      section {
+        padding: 60px 6%
+      }
+
+      .hero {
+        padding-top: 100px
+      }
     }
+
     .thumb {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
 
     .contact-box:hover {
-  box-shadow: 0 0 30px rgba(255,215,0,0.25), 0 0 10px rgba(255,215,0,0.3);
-  transform: translateY(-6px);
-}
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.25), 0 0 10px rgba(255, 215, 0, 0.3);
+      transform: translateY(-6px);
+    }
 
-.social-icon {
-  font-size: 1.8rem;
-  color: #ffd700;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-}
+    .social-icon {
+      font-size: 1.8rem;
+      color: #ffd700;
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    }
 
-.social-icon:hover {
-  transform: scale(1.2);
-  color: #fff;
-  text-shadow: 0 0 15px #ffd700, 0 0 30px #ffbf00;
-}
+    .social-icon:hover {
+      transform: scale(1.2);
+      color: #fff;
+      text-shadow: 0 0 15px #ffd700, 0 0 30px #ffbf00;
+    }
 
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffd700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  position: relative;
-}
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      position: relative;
+    }
 
-.section-title::after {
-  content: '';
-  display: block;
-  width: 70px;
-  height: 3px;
-  background: #ffd700;
-  margin: 8px auto 0;
-  border-radius: 3px;
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin: 10px 0;
-  border: 2px solid rgba(255, 215, 0, 0.4);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.3s ease;
-}
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #ffd700;
+      margin: 8px auto 0;
+      border-radius: 3px;
+    }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #ffd700;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
-}
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s ease;
+    }
 
-.contact-form button {
-  width: 100%;
-  margin-top: 10px;
-}
-.project img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #ffd700;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    }
 
+    .contact-form button {
+      width: 100%;
+      margin-top: 10px;
+    }
 
-
-
+    .project img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
+
 <body>
 
   <!-- HEADER -->
@@ -364,7 +645,9 @@
     </nav>
 
     <div class="hamburger" id="hamburgerBtn" aria-label="menu" aria-expanded="false">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   </header>
 
@@ -381,7 +664,7 @@
         <div class="buttons" style="margin-top:20px;">
           <a href="#projects" class="btn-primary">View Projects</a>
           <a href="#contact" class="btn-secondary">Hire Me</a>
-          <a href="RESUME.pdf" download class="btn-tertiary">Download CV</a>
+          <a href="Resume1.pdf" download class="btn-tertiary">Download CV</a>
         </div>
 
       </div>
@@ -389,7 +672,9 @@
       <div class="hero-right" data-aos="fade-left">
         <div class="hero-photo-wrap" title="Prasad Kumar Mohanty">
           <div class="hero-photo">
-            <img src="myphoto.jpeg" alt="Prasad Kumar Mohanty — profile photo" style="width:100%; height:100%; object-fit:cover; object-position:center 15%; filter:brightness(1.03) contrast(1.04);" onerror="this.onerror=null; this.src='https://via.placeholder.com/400?text=Profile'">
+            <img src="myphoto.jpeg" alt="Prasad Kumar Mohanty — profile photo"
+              style="filter:brightness(1.03) contrast(1.04);"
+              onerror="this.onerror=null; this.src='https://via.placeholder.com/400?text=Profile'">
           </div>
         </div>
       </div>
@@ -402,22 +687,27 @@
     <div class="about-wrap container">
       <div class="about-text" data-aos="fade-right">
         <p style="font-size: 1.05rem; line-height: 1.8; color: #e5e5e5;">
-          I’m <strong style="color:#ffd700;">Prasad Kumar Mohanty</strong> — an 
-          <strong>enthusiastic Full Stack Developer</strong> with hands-on experience 
-          in building a <strong>Hospital Management System (HMS)</strong> and an interactive <strong>Travel Booking Application</strong>.
-          I specialize in building responsive, scalable web applications using <strong>PHP, MySQL, JavaScript, and Bootstrap</strong>.
+          I’m <strong style="color:#ffd700;">Prasad Kumar Mohanty</strong> — an
+          <strong>enthusiastic Full Stack Developer</strong> with hands-on experience
+          in building a <strong>Hospital Management System (HMS)</strong> and an interactive <strong>Travel Booking
+            Application</strong>.
+          I specialize in building responsive, scalable web applications using <strong>PHP, MySQL, JavaScript, and
+            Bootstrap</strong>.
         </p>
 
         <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 12px; color:#cfcfcf;">
-          My expertise spans modern frontend design (<strong>HTML5, CSS3, JavaScript, React fundamentals</strong>) 
-          and secure backend services (<strong>RESTful APIs, JWT Authentication, OAuth, and MySQL optimization</strong>). 
+          My expertise spans modern frontend design (<strong>HTML5, CSS3, JavaScript, React fundamentals</strong>)
+          and secure backend services (<strong>RESTful APIs, JWT Authentication, OAuth, and MySQL
+            optimization</strong>).
           I’m passionate about engineering clean, secure, and intuitive digital solutions.
         </p>
 
-        <div style="margin-top: 20px; font-size: 0.98rem; color:#bcbcbc; background:rgba(0,0,0,0.25); padding:16px; border-radius:10px; border:1px solid rgba(255,215,0,0.15);">
+        <div
+          style="margin-top: 20px; font-size: 0.98rem; color:#bcbcbc; background:rgba(0,0,0,0.25); padding:16px; border-radius:10px; border:1px solid rgba(255,215,0,0.15);">
           <div style="margin-bottom:8px;">
-            🎓 <strong>Education:</strong> B.Sc. in Science — 
-            <em style="color:#ffd700;">Udaynath Autonomous College of Science & Technology</em> (Aug 2022 – May 2025) • <strong>CGPA: 7.5</strong>
+            🎓 <strong>Education:</strong> MCA  —
+            <em style="color:#ffd700;">Lovely Professional University<em> (Aug 2025 – july 2025) •
+            <strong>CGPA: 8.2</strong>
           </div>
           <div>
             📜 <strong>Key Certifications:</strong>
@@ -429,11 +719,9 @@
           </div>
         </div>
 
-        <a class="btn-accent download-resume" 
-           href="RESUME.pdf" 
-           download 
-           style="display:inline-block; margin-top: 22px; padding: 12px 24px; background: #ffd700; color: #111; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; box-shadow:0 4px 15px rgba(255,215,0,0.3);">
-           📄 Download Official Resume (PDF)
+        <a class="btn-accent download-resume" href="Resume1.pdf" download
+          style="display:inline-block; margin-top: 22px; padding: 12px 24px; background: #ffd700; color: #111; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; box-shadow:0 4px 15px rgba(255,215,0,0.3);">
+          📄 Download Official Resume (PDF)
         </a>
       </div>
     </div>
@@ -480,85 +768,99 @@
   <section id="certificates" data-aos="fade-up">
     <div class="section-title">Certificates & Badges</div>
 
-    <div class="cert-wrap container" 
-         style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; align-items:stretch; margin-top:30px;">
+    <div class="cert-wrap container"
+      style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; align-items:stretch; margin-top:30px;">
 
       <!-- Certificate 1: Mastercard Cybersecurity -->
-      <div class="cert-card" 
-           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+      <div class="cert-card"
+        style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
                   border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <div style="background:rgba(255,64,64,0.15); border:1px solid rgba(255,64,64,0.4); color:#ff6b6b; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+          <div
+            style="background:rgba(255,64,64,0.15); border:1px solid rgba(255,64,64,0.4); color:#ff6b6b; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
             🛡️ Cybersecurity Simulation
           </div>
-          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')">
-            <iframe src="CERTIFICATE4.pdf#toolbar=0" style="width:100%; height:100%; border:none; pointer-events:none;"></iframe>
+          <div
+            style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.1); cursor:pointer;"
+            onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')">
+            <iframe src="CERTIFICATE4.pdf#toolbar=0"
+              style="width:100%; height:100%; border:none; pointer-events:none;"></iframe>
           </div>
           <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">Mastercard Cybersecurity</h4>
           <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">Mastercard / Forage • July 2026</p>
-          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">Phishing Email Simulation & Threat Analysis</p>
+          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">Phishing Email Simulation & Threat Analysis
+          </p>
         </div>
         <div style="display:flex; gap:8px; justify-content:center;">
-          <button onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')" 
-                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+          <button onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')"
+            style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
             🔍 View Preview
           </button>
-          <a href="CERTIFICATE4.pdf" target="_blank" download 
-             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+          <a href="CERTIFICATE4.pdf" target="_blank" download
+            style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
             📥 PDF
           </a>
         </div>
       </div>
 
       <!-- Certificate 2: AI & IoT COEB -->
-      <div class="cert-card" 
-           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+      <div class="cert-card"
+        style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
                   border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <div style="background:rgba(121,180,40,0.15); border:1px solid rgba(121,180,40,0.4); color:#a8ff35; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+          <div
+            style="background:rgba(121,180,40,0.15); border:1px solid rgba(121,180,40,0.4); color:#a8ff35; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
             🤖 AI & IoT Workshop
           </div>
-          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')">
-            <img src="CERTIFICATE1.jpeg" alt="AI & IoT Certificate" style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
+          <div
+            style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;"
+            onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')">
+            <img src="CERTIFICATE1.jpeg" alt="AI & IoT Certificate"
+              style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
           </div>
           <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">AI & Internet of Things</h4>
           <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">COEB • March 2025</p>
-          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">College of Engineering Bhubaneswar Webinar</p>
+          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">College of Engineering Bhubaneswar Webinar
+          </p>
         </div>
         <div style="display:flex; gap:8px; justify-content:center;">
-          <button onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')" 
-                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+          <button onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')"
+            style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
             🔍 View Certificate
           </button>
-          <a href="CERTIFICATE1.jpeg" target="_blank" download 
-             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+          <a href="CERTIFICATE1.jpeg" target="_blank" download
+            style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
             📥 Download
           </a>
         </div>
       </div>
 
       <!-- Certificate 3: NxtWave Generative AI -->
-      <div class="cert-card" 
-           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+      <div class="cert-card"
+        style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
                   border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <div style="background:rgba(0,210,255,0.15); border:1px solid rgba(0,210,255,0.4); color:#00d2ff; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+          <div
+            style="background:rgba(0,210,255,0.15); border:1px solid rgba(0,210,255,0.4); color:#00d2ff; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
             ⚡ Generative AI Model
           </div>
-          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')">
-            <img src="CERTIFICATE2.jpeg" alt="Generative AI Certificate" style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
+          <div
+            style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;"
+            onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')">
+            <img src="CERTIFICATE2.jpeg" alt="Generative AI Certificate"
+              style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
           </div>
           <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">Generative AI Workshop</h4>
           <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">NxtWave • June 2024</p>
           <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">Build Your Own Generative AI Model</p>
         </div>
         <div style="display:flex; gap:8px; justify-content:center;">
-          <button onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')" 
-                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+          <button onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')"
+            style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
             🔍 View Certificate
           </button>
-          <a href="CERTIFICATE2.jpeg" target="_blank" download 
-             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+          <a href="CERTIFICATE2.jpeg" target="_blank" download
+            style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
             📥 Download
           </a>
         </div>
@@ -570,90 +872,90 @@
 
 
   <!-- PROJECTS -->
-<section id="projects" data-aos="zoom-in">
-  <div class="section-title">Projects</div>
+  <section id="projects" data-aos="zoom-in">
+    <div class="section-title">Projects</div>
 
-  <div class="projects-grid container">
-    <div class="project" data-aos="flip-left">
-      <div class="thumb" style="background-image:url('Hospital-Management-System-development.jpg');"></div>
-      <h5>Hospital Management System</h5>
-      <p style="color:#dcdcdc">
-        Patient records, appointment scheduling, billing, staff & inventory management.
-        Built with PHP (CodeIgniter/Laravel), MySQL, Bootstrap and hosted on AWS.
-      </p>
-      <p><a class="btn-accent" href="https://hospitalmgmtsys.42web.io" target="_blank" rel="noreferrer">View Project</a></p>
-    </div>
+    <div class="projects-grid container">
+      <div class="project" data-aos="flip-left">
+        <div class="thumb" style="background-image:url('Hospital-Management-System-development.jpg');"></div>
+        <h5>Hospital Management System</h5>
+        <p style="color:#dcdcdc">
+          Patient records, appointment scheduling, billing, staff & inventory management.
+          Built with PHP (CodeIgniter/Laravel), MySQL, Bootstrap and hosted on AWS.
+        </p>
+        <p><a class="btn-accent" href="https://hospitalmgmtsys.42web.io" target="_blank" rel="noreferrer">View
+            Project</a></p>
+      </div>
 
-    <div class="project" data-aos="flip-left" data-aos-delay="80">
-      <div class="thumb" style="background-image:url('online-booking-service-vector-illustration-260nw-1404844478.JPG');"></div>
-      <h5>Travel App</h5>
-      <p style="color:#dcdcdc">
-        Flight & hotel booking, destination guides and user reviews.
-        Built with HTML, CSS and JavaScript (React for SPA features).
-      </p>
-      <p><a class="btn-accent" href="https://travel-app-murex-two.vercel.app/" target="_blank" rel="noreferrer">View Project</a></p>
+      <div class="project" data-aos="flip-left" data-aos-delay="80">
+        <div class="thumb"
+          style="background-image:url('online-booking-service-vector-illustration-260nw-1404844478.JPG');"></div>
+        <h5>Travel App</h5>
+        <p style="color:#dcdcdc">
+          Flight & hotel booking, destination guides and user reviews.
+          Built with HTML, CSS and JavaScript (React for SPA features).
+        </p>
+        <p><a class="btn-accent" href="https://travel-app-murex-two.vercel.app/" target="_blank" rel="noreferrer">View
+            Project</a></p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- CONTACT -->
   <section id="contact" data-aos="fade-up" style="padding:80px 20px; text-align:center;">
-  <div class="section-title">Get In Touch</div>
+    <div class="section-title">Get In Touch</div>
 
-  <div class="contact-box" 
-       style="max-width:550px; margin:40px auto; background:rgba(20,20,20,0.8); 
+    <div class="contact-box" style="max-width:550px; margin:40px auto; background:rgba(20,20,20,0.8); 
               border:1px solid rgba(255,215,0,0.2); border-radius:12px; padding:40px 25px; 
               box-shadow:0 0 25px rgba(255,215,0,0.1); transition:0.4s;">
-    
-    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
-      📞 
-      <a href="tel:+917847893653" 
-         style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
-         +91 78478 93653
-      </a>
-    </p>
 
-    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
-      ✉️ 
-      <a href="mailto:kumarprasadmohanty5@gmail.com" 
-         style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
-         kumarprasadmohanty5@gmail.com
-      </a>
-    </p>
+      <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
+        📞
+        <a href="tel:+917847893653" style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
+          +91 78478 93653
+        </a>
+      </p>
 
-    <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:25px;">
-      🌍 Based in <strong style="color:#ffd700;">Cuttack, Odisha</strong>
-    </p>
+      <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:12px;">
+        ✉️
+        <a href="mailto:kumarprasadmohanty5@gmail.com"
+          style="color:#ffd700; text-decoration:none; font-weight:600; transition:0.3s;">
+          kumarprasadmohanty5@gmail.com
+        </a>
+      </p>
 
-    <div class="social-links" 
-         style="display:flex; justify-content:center; gap:25px; margin-top:10px;">
-      <a href="https://www.linkedin.com/in/prasad-kumar-mohanty-77a2b22ba" 
-         target="_blank" rel="noreferrer" class="social-icon linkedin" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://github.com/PRASAD07506" 
-         target="_blank" rel="noreferrer" class="social-icon github" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.instagram.com/oye_itz_prasad_07?igsh=ZHZwMXJiZmJ3eW8=" 
-         target="_blank" rel="noreferrer" class="social-icon instagram" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
+      <p style="font-size:1.05rem; color:#e5e5e5; margin-bottom:25px;">
+        🌍 Based in <strong style="color:#ffd700;">Cuttack, Odisha</strong>
+      </p>
+
+      <div class="social-links" style="display:flex; justify-content:center; gap:25px; margin-top:10px;">
+        <a href="https://www.linkedin.com/in/prasad-kumar-mohanty-77a2b22ba" target="_blank" rel="noreferrer"
+          class="social-icon linkedin" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/PRASAD07506" target="_blank" rel="noreferrer" class="social-icon github"
+          title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/oye_itz_prasad_07?igsh=ZHZwMXJiZmJ3eW8=" target="_blank" rel="noreferrer"
+          class="social-icon instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="contact-form" data-aos="fade-up">
+        <h3 style="color:#ffd700; margin-top:30px;">Send me a message</h3>
+
+        <form action="https://formspree.io/f/your_form_id" method="POST" style="max-width:500px; margin:20px auto;">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn-accent">📨 Send Message</button>
+        </form>
+      </div>
+
     </div>
-    <div class="contact-form" data-aos="fade-up">
-  <h3 style="color:#ffd700; margin-top:30px;">Send me a message</h3>
-  
-  <form action="https://formspree.io/f/your_form_id" method="POST" style="max-width:500px; margin:20px auto;">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn-accent">📨 Send Message</button>
-  </form>
-</div>
-
-  </div>
-</section>
+  </section>
 
 
   <footer>
@@ -781,4 +1083,5 @@
     });
   </script>
 </body>
+
 </html>

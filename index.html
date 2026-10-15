@@ -62,9 +62,105 @@
     .intro-role{color:var(--muted);font-size:1.05rem;margin-bottom:12px}
     #typed-box{color:#4bba5f;font-weight:700;font-size:1.05rem;border-right:3px solid #2b9659;padding-right:6px;white-space:nowrap;overflow:hidden}
 
-    .hero-photo{width:300px;height:300px;border-radius:50%;overflow:hidden;border:5px solid rgba(206, 206, 19, 0.12);box-shadow:0 10px 35px rgba(0,0,0,0.6)}
+    .hero-photo-wrap {
+      position: relative;
+      width: 290px;
+      height: 290px;
+      margin: 0 auto;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #ffd700, #a8ff35, #00d2ff);
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.35);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .hero-photo-wrap:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+    }
+    .hero-photo{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111;}
     .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s,box-shadow .45s}
-    .hero-photo:hover img{transform:scale(1.04);box-shadow:0 18px 45px rgba(191, 200, 13, 0.18)}
+
+    .cert-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(255, 215, 0, 0.25) !important;
+      border-color: #ffd700 !important;
+    }
+
+    /* Certificate Modal */
+    .cert-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .cert-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .cert-modal-container {
+      background: #16181f;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .cert-modal-header {
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cert-modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffd700;
+    }
+    .cert-modal-close {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .cert-modal-close:hover { color: #fff; }
+    .cert-modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-height: 400px;
+    }
+    .cert-modal-body img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+    .cert-modal-body iframe {
+      width: 100%;
+      height: 70vh;
+      border: none;
+      border-radius: 8px;
+    }
 
     .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .btn-accent{background:linear-gradient(90deg,var(--accent),#bb913b);color:#111;border-radius:28px;padding:10px 18px;border:none;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(255,180,0,0.12);transition:.25s}
@@ -261,6 +357,7 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificates</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -281,18 +378,19 @@
 
         <div id="typed-box" style="margin-top:8px"></div>
 
-        <div class="buttons">
-  <a href="#projects" class="btn-primary">View Projects</a>
-  <a href="#contact" class="btn-secondary">Hire Me</a>
-  <a href="assets/PrasadKumarMohanty_CV.pdf" download class="btn-tertiary">Download CV</a>
-</div>
+        <div class="buttons" style="margin-top:20px;">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-secondary">Hire Me</a>
+          <a href="RESUME.pdf" download class="btn-tertiary">Download CV</a>
+        </div>
 
       </div>
 
       <div class="hero-right" data-aos="fade-left">
-        <!-- Make sure file is located at /images/mtphoto.jpg -->
-        <div class="hero-photo" title="Prasad Kumar Mohanty">
-          <img src="myphoto.jpg" alt="Prasad Kumar Mohanty — profile photo" onerror="this.onerror=null; this.src='https://via.placeholder.com/400?text=Profile'">
+        <div class="hero-photo-wrap" title="Prasad Kumar Mohanty">
+          <div class="hero-photo">
+            <img src="myphoto.jpeg" alt="Prasad Kumar Mohanty — profile photo" style="width:100%; height:100%; object-fit:cover; object-position:center 15%; filter:brightness(1.03) contrast(1.04);" onerror="this.onerror=null; this.src='https://via.placeholder.com/400?text=Profile'">
+          </div>
         </div>
       </div>
     </div>
@@ -300,40 +398,46 @@
 
   <!-- ABOUT -->
   <section id="about" data-aos="fade-up">
-  <div class="section-title">About Me</div>
-  <div class="about-wrap container">
-    <div class="about-text" data-aos="fade-right">
-      <p style="font-size: 1.05rem; line-height: 1.8; color: #e5e5e5;">
-        I’m <strong style="color:#ffd700;">Prasad Kumar Mohanty</strong> — an 
-        <strong>enthusiastic Full Stack Developer</strong> with hands-on experience 
-        in developing a <strong>Hospital Management System (HMS)</strong> using 
-        <strong>PHP, MySQL, and JavaScript</strong>. I specialize in building responsive, 
-        user-friendly web applications with a focus on clean design and secure backend systems.
-      </p>
+    <div class="section-title">About Me</div>
+    <div class="about-wrap container">
+      <div class="about-text" data-aos="fade-right">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #e5e5e5;">
+          I’m <strong style="color:#ffd700;">Prasad Kumar Mohanty</strong> — an 
+          <strong>enthusiastic Full Stack Developer</strong> with hands-on experience 
+          in building a <strong>Hospital Management System (HMS)</strong> and an interactive <strong>Travel Booking Application</strong>.
+          I specialize in building responsive, scalable web applications using <strong>PHP, MySQL, JavaScript, and Bootstrap</strong>.
+        </p>
 
-      <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 12px; color:#cfcfcf;">
-        My expertise includes frontend technologies like <strong>HTML, CSS, Bootstrap, and JavaScript</strong>, 
-        and backend development involving <strong>RESTful APIs, JWT Authentication, and MySQL database management</strong>. 
-        I’m passionate about creating scalable, efficient systems that enhance user experience and simplify business operations.
-      </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; margin-top: 12px; color:#cfcfcf;">
+          My expertise spans modern frontend design (<strong>HTML5, CSS3, JavaScript, React fundamentals</strong>) 
+          and secure backend services (<strong>RESTful APIs, JWT Authentication, OAuth, and MySQL optimization</strong>). 
+          I’m passionate about engineering clean, secure, and intuitive digital solutions.
+        </p>
 
-      <div style="margin-top: 18px; font-size: 0.98rem; color:#bcbcbc;">
-        🎓 <strong>Education:</strong> B.Sc. in Science — 
-        <em>Udaynath Autonomous College of Science & Technology</em> (Aug 2022 – May 2025)  
-        <br>
-        📜 <strong>Certification:</strong> <em>AI for Students — Build Your Own Generative AI Model</em> (NxtWave, Aug 2024)
+        <div style="margin-top: 20px; font-size: 0.98rem; color:#bcbcbc; background:rgba(0,0,0,0.25); padding:16px; border-radius:10px; border:1px solid rgba(255,215,0,0.15);">
+          <div style="margin-bottom:8px;">
+            🎓 <strong>Education:</strong> B.Sc. in Science — 
+            <em style="color:#ffd700;">Udaynath Autonomous College of Science & Technology</em> (Aug 2022 – May 2025) • <strong>CGPA: 7.5</strong>
+          </div>
+          <div>
+            📜 <strong>Key Certifications:</strong>
+            <ul style="margin-left:20px; margin-top:5px; color:#ddd; font-size:0.92rem;">
+              <li>🛡️ <strong>Cybersecurity Job Simulation:</strong> Mastercard / Forage (July 2026)</li>
+              <li>🤖 <strong>AI & Internet of Things:</strong> College of Engineering Bhubaneswar (March 2025)</li>
+              <li>⚡ <strong>Generative AI Model Workshop:</strong> NxtWave (June 2024)</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="btn-accent download-resume" 
+           href="RESUME.pdf" 
+           download 
+           style="display:inline-block; margin-top: 22px; padding: 12px 24px; background: #ffd700; color: #111; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; box-shadow:0 4px 15px rgba(255,215,0,0.3);">
+           📄 Download Official Resume (PDF)
+        </a>
       </div>
-
-      <a class="btn-accent download-resume" 
-         href="RESUME.pdf" 
-         download 
-         style="display:inline-block; margin-top: 25px; padding: 10px 22px; background: #ffd700; color: #111; border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.3s;">
-         📄 Download Resume
-      </a>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- SKILLS -->
   <section id="skills" data-aos="fade-up">
@@ -341,87 +445,128 @@
 
     <div class="skills-grid" data-aos="fade-up">
       <div class="skill-card">
-        <div class="skill-name"><span>HTML</span><span>90%</span></div>
+        <div class="skill-name"><span>HTML & CSS</span><span>90%</span></div>
         <div class="progress" style="--w:90%"><span style="width:90%"></span></div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-name"><span>CSS / Bootstrap</span><span>85%</span></div>
+        <div class="skill-name"><span>Bootstrap & UI Design</span><span>85%</span></div>
         <div class="progress" style="--w:85%"><span style="width:85%"></span></div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-name"><span>JavaScript</span><span>80%</span></div>
+        <div class="skill-name"><span>JavaScript (ES6+) / React</span><span>80%</span></div>
         <div class="progress" style="--w:80%"><span style="width:80%"></span></div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-name"><span>PHP</span><span>85%</span></div>
+        <div class="skill-name"><span>PHP & REST APIs</span><span>85%</span></div>
         <div class="progress" style="--w:85%"><span style="width:85%"></span></div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-name"><span>MySQL</span><span>80%</span></div>
+        <div class="skill-name"><span>MySQL & Database Ops</span><span>80%</span></div>
         <div class="progress" style="--w:80%"><span style="width:80%"></span></div>
       </div>
 
       <div class="skill-card">
-        <div class="skill-name"><span>CPP</span><span>75%</span></div>
+        <div class="skill-name"><span>C++ & Git/GitHub</span><span>75%</span></div>
         <div class="progress" style="--w:75%"><span style="width:75%"></span></div>
       </div>
     </div>
   </section>
-<!--CERTIFICATES-->
-<section id="certificates" data-aos="fade-up">
-  <div class="section-title">Certificates</div>
 
-  <div class="cert-wrap container" 
-       style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; align-items:stretch; margin-top:30px;">
+  <!-- CERTIFICATES -->
+  <section id="certificates" data-aos="fade-up">
+    <div class="section-title">Certificates & Badges</div>
 
-    <!-- Certificate 1 -->
-    <div class="cert-card" 
-         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
-                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
-      <img src="CERTIFICATE1.jpeg" alt="Certificate 1" 
-           style="width:100%; border-radius:10px; margin-bottom:15px;">
-      <h3 style="color:#ffd700;">AI for Students</h3>
-      <p style="color:#ccc; font-size:0.9rem;">NxtWave • August 2024</p>
-      <a href="certificate1.pdf" target="_blank" 
-         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
-         View Certificate
-      </a>
+    <div class="cert-wrap container" 
+         style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; align-items:stretch; margin-top:30px;">
+
+      <!-- Certificate 1: Mastercard Cybersecurity -->
+      <div class="cert-card" 
+           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+                  border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="background:rgba(255,64,64,0.15); border:1px solid rgba(255,64,64,0.4); color:#ff6b6b; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+            🛡️ Cybersecurity Simulation
+          </div>
+          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')">
+            <iframe src="CERTIFICATE4.pdf#toolbar=0" style="width:100%; height:100%; border:none; pointer-events:none;"></iframe>
+          </div>
+          <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">Mastercard Cybersecurity</h4>
+          <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">Mastercard / Forage • July 2026</p>
+          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">Phishing Email Simulation & Threat Analysis</p>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="openCertModal('Mastercard Cybersecurity Job Simulation', 'CERTIFICATE4.pdf', 'pdf')" 
+                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+            🔍 View Preview
+          </button>
+          <a href="CERTIFICATE4.pdf" target="_blank" download 
+             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+            📥 PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- Certificate 2: AI & IoT COEB -->
+      <div class="cert-card" 
+           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+                  border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="background:rgba(121,180,40,0.15); border:1px solid rgba(121,180,40,0.4); color:#a8ff35; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+            🤖 AI & IoT Workshop
+          </div>
+          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')">
+            <img src="CERTIFICATE1.jpeg" alt="AI & IoT Certificate" style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
+          </div>
+          <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">AI & Internet of Things</h4>
+          <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">COEB • March 2025</p>
+          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">College of Engineering Bhubaneswar Webinar</p>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="openCertModal('Artificial Intelligence & Internet of Things', 'CERTIFICATE1.jpeg', 'image')" 
+                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+            🔍 View Certificate
+          </button>
+          <a href="CERTIFICATE1.jpeg" target="_blank" download 
+             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+            📥 Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Certificate 3: NxtWave Generative AI -->
+      <div class="cert-card" 
+           style="background:rgba(20,20,25,0.85); padding:20px; border-radius:14px; width:310px; text-align:center; 
+                  border:1px solid rgba(255,215,0,0.25); box-shadow:0 8px 25px rgba(0,0,0,0.4); transition:all 0.3s ease; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="background:rgba(0,210,255,0.15); border:1px solid rgba(0,210,255,0.4); color:#00d2ff; padding:4px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; display:inline-block; margin-bottom:12px;">
+            ⚡ Generative AI Model
+          </div>
+          <div style="width:100%; height:170px; background:#111; border-radius:10px; overflow:hidden; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;" onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')">
+            <img src="CERTIFICATE2.jpeg" alt="Generative AI Certificate" style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s;">
+          </div>
+          <h4 style="color:#ffd700; font-size:1.1rem; margin-bottom:6px;">Generative AI Workshop</h4>
+          <p style="color:#ccc; font-size:0.85rem; margin-bottom:4px;">NxtWave • June 2024</p>
+          <p style="color:#97a5bb; font-size:0.78rem; margin-bottom:15px;">Build Your Own Generative AI Model</p>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="openCertModal('AI for Students: Generative AI Model', 'CERTIFICATE2.jpeg', 'image')" 
+                  style="color:#111; background:#ffd700; padding:8px 14px; border-radius:6px; border:none; font-size:0.88rem; font-weight:600; cursor:pointer; transition:0.2s;">
+            🔍 View Certificate
+          </button>
+          <a href="CERTIFICATE2.jpeg" target="_blank" download 
+             style="color:#ffd700; border:1px solid #ffd700; padding:8px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:0.2s;">
+            📥 Download
+          </a>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Certificate 2 -->
-    <div class="cert-card" 
-         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
-                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
-      <img src="CERTIFICATE2.jpeg" alt="Certificate 2" 
-           style="width:100%; border-radius:10px; margin-bottom:15px;">
-      <h3 style="color:#ffd700;">Web Development Workshop</h3>
-      <p style="color:#ccc; font-size:0.9rem;">NxtWave • July 2024</p>
-      <a href="certificate2.pdf" target="_blank" 
-         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
-         View Certificate
-      </a>
-    </div>
-
-    <!-- Certificate 3 -->
-    <div class="cert-card" 
-         style="background:#1a1a1a; padding:20px; border-radius:12px; width:300px; text-align:center; 
-                box-shadow:0 0 15px rgba(255,215,0,0.2); transition:transform 0.3s, box-shadow 0.3s;">
-      <img src="CERTIFICATE3.jpeg" alt="Certificate 3" 
-           style="width:100%; border-radius:10px; margin-bottom:15px;">
-      <h3 style="color:#ffd700;">JavaScript Essentials</h3>
-      <p style="color:#ccc; font-size:0.9rem;">NxtWave • June 2024</p>
-      <a href="certificate3.pdf" target="_blank" 
-         style="color:#111; background:#ffd700; padding:8px 15px; border-radius:6px; text-decoration:none; font-weight:600;">
-         View Certificate
-      </a>
-    </div>
-
-  </div>
-</section>
 
 
   <!-- PROJECTS -->
@@ -515,6 +660,19 @@
     <small>© <span id="year"></span> Prasad Kumar Mohanty • Built with ♥</small>
   </footer>
 
+  <!-- CERTIFICATE LIGHTBOX MODAL -->
+  <div id="certModalOverlay" class="cert-modal-overlay" onclick="if(event.target === this) closeCertModal()">
+    <div class="cert-modal-container">
+      <div class="cert-modal-header">
+        <div id="certModalTitle" class="cert-modal-title">Certificate Title</div>
+        <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
+      </div>
+      <div id="certModalBody" class="cert-modal-body">
+        <!-- Content dynamically injected -->
+      </div>
+    </div>
+  </div>
+
   <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- SCRIPTS -->
@@ -589,6 +747,37 @@
     // Run once after AOS finished loading (so progress bars animate)
     window.addEventListener('load', () => {
       setTimeout(animateSkills, 300);
+    });
+
+    // Certificate Modal Lightbox logic
+    function openCertModal(title, fileUrl, type) {
+      const modal = document.getElementById('certModalOverlay');
+      const titleEl = document.getElementById('certModalTitle');
+      const bodyEl = document.getElementById('certModalBody');
+
+      titleEl.textContent = title;
+      if (type === 'pdf') {
+        bodyEl.innerHTML = `<iframe src="${fileUrl}" title="${title}"></iframe>`;
+      } else {
+        bodyEl.innerHTML = `<img src="${fileUrl}" alt="${title}">`;
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCertModal() {
+      const modal = document.getElementById('certModalOverlay');
+      const bodyEl = document.getElementById('certModalBody');
+
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { bodyEl.innerHTML = ''; }, 300);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCertModal();
     });
   </script>
 </body>
